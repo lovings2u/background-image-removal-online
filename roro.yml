@@ -1,4 +1,4 @@
-project: background-removal
+project: test-background-removal
 runtime: python3-keras
 
 services:

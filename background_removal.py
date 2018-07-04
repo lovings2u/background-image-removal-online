@@ -48,6 +48,7 @@ def predict1(image):
 
     :param image: numpy array
     """
+    print(image.shape)
     height, width = image.shape[0], image.shape[1]
     resized_image = imresize(image, (224, 224)) / 255.0
 
@@ -72,15 +73,16 @@ def predict1(image):
     return img2
 
 def read_image(image_spec):
-    if not isinstance(image_spec, dict):
-        return None
-    if 'data' in image_spec:
-        data = base64.b64decode(image_spec['data'])
-    elif 'url' in image_spec:
-        data = requests.get(image_spec['url']).content
-    else:
-        return None
-    return Image.open(fp=io.BytesIO(data))
+    # print(image_spec)
+    # if not isinstance(image_spec, dict):
+    #     return None
+    # if 'data' in image_spec:
+    #     data = base64.b64decode(image_spec['data'])
+    # elif 'url' in image_spec:
+    #     data = requests.get(image_spec['url']).content
+    # else:
+    #     return None
+    return Image.open(fp=io.BytesIO(requests.get(image_spec).content))
 
 def write_image(image):
     if isinstance(image, np.ndarray):
@@ -93,6 +95,8 @@ def write_image(image):
     }
 
 def predict(image):
+    print(image)
     img=read_image(image)
+    print(img)
     imgarray = predict1(np.array(img))
     return write_image(imgarray)
