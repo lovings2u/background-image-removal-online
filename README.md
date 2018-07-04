@@ -61,7 +61,9 @@ system "convert -fill none -fuzz 5% -draw 'matte 0,0 floodfill' output.png real_
 - `<file url>` : 배경제거 하고자 하는 이미지 url
 - 기본적으로 이미지의 배경이 삭제되는 것이 아니라 검정색으로 처리되어 나오기 때문에 imagemagick로 다시한번 처리해줌
 
-
+```shell
+$ ruby test.rb
+```
 
 *학습되는 모델이 인물'사진'인 것 같다는 느낌이 많이 듬. 이모티콘 제작을 위해서는 해당 모델에 대한 학습이 다시 필요할 것 같음.*
 
